@@ -1,8 +1,6 @@
 import argparse
-from download_all import downloadAllImage
 
-
-def main():
+def execute():
 
   welcome = 'Welcome to Download All Images from URL'
   parser = argparse.ArgumentParser(description=welcome)
@@ -22,7 +20,7 @@ def main():
   destination_path = args.destination
   urls = args.urls.split(',')
 
-  downloadAllImage(urls, destination=destination_path)
+  download_all_images(urls, destination=destination_path)
 
 if __name__=="__main__":
-  main()
+  execute()

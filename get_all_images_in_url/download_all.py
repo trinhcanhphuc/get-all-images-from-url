@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 currentDirectory = os.getcwd()
 
-def downloadAllImage(url, destination):
+def download_all_images(url, destination):
   if not destination:
     destination = currentDirectory
   if isinstance(url, list):
@@ -14,7 +14,7 @@ def downloadAllImage(url, destination):
   else:
     downloadAllImagesInSingleURL(url, destination)
 
-def downloadAllImagesInSingleURL(site_url, destination):
+def download_all_images_in_single_URL(site_url, destination):
   req = Request(site_url, headers={'User-Agent': 'Mozilla/5.0'})
   html = urlopen(req).read().decode('utf-8')
   ulTag = BeautifulSoup(html, 'html.parser').find('ul', {'class': 'icon-list'})
@@ -22,7 +22,6 @@ def downloadAllImagesInSingleURL(site_url, destination):
   for imgTag in imgTags:
     imgURL = imgTag.get('src')
     print('===============================================================================================')
-    imgURL = f"https://cdn.jim-nielsen.com/ios/512/{imgURL.split('/')[-1]}"
     file_name = imgURL.split('/')[-1]
     r = requests.get(imgURL, allow_redirects=True)
     if r.status_code == 200:
@@ -36,6 +35,6 @@ def downloadAllImagesInSingleURL(site_url, destination):
     else:
       print("!!!Not found url", imgURL)
 
-def downloadAllImagesInListURLs(site_urls, destination):
+def download_all_images_in_list_URL(site_urls, destination):
   for site_url in site_urls:
     downloadAllImagesInSingleURL(site_url, destination)

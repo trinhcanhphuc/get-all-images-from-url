@@ -1,4 +1,4 @@
-from download_all import downloadAllImage
+from download_all import download_all_images
 
 
 def main():
@@ -7,7 +7,7 @@ def main():
     'https://www.iosicongallery.com/'
   ]
 
-  downloadAllImage(site_urls, destination='iosicongallery')
+  download_all_images(site_urls, destination='iosicongallery')
 
 if __name__=="__main__":
   main()
