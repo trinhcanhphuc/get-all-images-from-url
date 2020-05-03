@@ -17,8 +17,8 @@ def download_all_images(url, destination):
 def download_all_images_in_single_URL(site_url, destination):
   req = Request(site_url, headers={'User-Agent': 'Mozilla/5.0'})
   html = urlopen(req).read().decode('utf-8')
-  ulTag = BeautifulSoup(html, 'html.parser').find('ul', {'class': 'icon-list'})
-  imgTags = ulTag.findAll('img')
+  html = BeautifulSoup(html, 'html.parser')
+  imgTags = html.findAll('img')
   for imgTag in imgTags:
     imgURL = imgTag.get('src')
     print('===============================================================================================')
