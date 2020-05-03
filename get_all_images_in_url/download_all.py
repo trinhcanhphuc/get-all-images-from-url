@@ -10,9 +10,9 @@ def download_all_images(url, destination):
   if not destination:
     destination = currentDirectory
   if isinstance(url, list):
-    downloadAllImagesInListURLs(url, destination)
+    download_all_images_in_list_URL(url, destination)
   else:
-    downloadAllImagesInSingleURL(url, destination)
+    download_all_images_in_single_URL(url, destination)
 
 def download_all_images_in_single_URL(site_url, destination):
   req = Request(site_url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -37,4 +37,4 @@ def download_all_images_in_single_URL(site_url, destination):
 
 def download_all_images_in_list_URL(site_urls, destination):
   for site_url in site_urls:
-    downloadAllImagesInSingleURL(site_url, destination)
+    download_all_images_in_single_URL(site_url, destination)
